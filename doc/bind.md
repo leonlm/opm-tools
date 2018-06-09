@@ -17,6 +17,7 @@ BIND(Berkeley Internet Name Domain)是目前使用最为广泛的DNS服务器软
 
 ### setup
 主配置文件：
+
 **\# vi /etc/named.conf**
 ```
 options {
@@ -34,6 +35,7 @@ include "/etc/named/$DomainName";		# 正向解析配置。DomainName为域名
 > 根据域名查找对应的IP地址
 
 1. 配置区域数据信息
+
 **# vi /etc/named/$DomainName**		# DomainName为域名
 ```
 zone "$DomainName" IN {
@@ -43,6 +45,7 @@ zone "$DomainName" IN {
 ```
 
 2. 配置解析数据信息
+
 **# vi /var/named/$DomainName.zone**
 ```
 $TTL 1D
@@ -58,6 +61,7 @@ ns      A       $ServerIP
 
 #### 反向解析
 
+待补充...
 
 
 ## DNS
@@ -66,33 +70,43 @@ ns      A       $ServerIP
 
 ### 基本概念
 * SOA记录
+
 	表明此DNS名称服务器是该DNS域中的数据信息来源
     
 * 域名服务器记录（NS记录）
+	
 	指定某域名由哪个NDS服务器来解析
     
 * 主机记录（A记录）
+	
 	用于名称解析的重要记录，将特定的主机名映射到对应主机的IP地址
 
 * 别名记录（CNAME记录）
+	
 	将某个别名指向到某个A记录上
 
 * 邮件交换记录（MX记录）
+	
 	用于电子邮件程序发送邮件时根据收信人的地址后缀来定位邮件服务器
 
 * IPv6主机记录（AAAA记录）
+	
 	与A记录对应，将特定的主机名映射到对应主机的IPv6地址
 
 * 服务位置记录（SRV记录）
+	
 	用于定义提供特定服务的服务器的位置
 
 * 反向解析记录（PTR记录）
+	
 	将IP地址映射到对应的域名，可以看成A记录的反向，IP地址的反向解析
 
 * NAPTR记录
+	
 	提供了正则表达式方式去映射域名。用于ENUM查询
  
 
 ## 参考
 https://www.isc.org/downloads/bind/
+
 https://zh.wikipedia.org/wiki/%E5%9F%9F%E5%90%8D%E7%B3%BB%E7%BB%9F
