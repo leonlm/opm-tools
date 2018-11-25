@@ -9,12 +9,11 @@
 function centos6_install(){
     cat <<EOF > /etc/yum.repos.d/saltstack.repo
 [saltstack-repo]
-name=SaltStack repo for RHEL/CentOS $releasever
-baseurl=https://repo.saltstack.com/yum/redhat/$releasever/$basearch/latest
+name=SaltStack repo for RHEL/CentOS 6
+baseurl=http://mirrors.ustc.edu.cn/salt/yum/redhat/6/x86_64/latest/
 enabled=1
 gpgcheck=1
-gpgkey=https://repo.saltstack.com/yum/redhat/$releasever/$basearch/latest/SALTSTACK-GPG-KEY.pub
-
+gpgkey=http://mirrors.ustc.edu.cn/salt/yum/redhat/6/x86_64/latest/SALTSTACK-GPG-KEY.pub
 EOF
     yum clean all
     yum install salt-master
